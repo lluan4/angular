@@ -1,0 +1,24 @@
+@if(appService.investmentResults.length > 0){
+<section>
+  <table>
+    <thead>
+      <th scope="col">Year</th>
+      <th scope="col">Investment Value</th>
+      <th scope="col">Interest (Year)</th>
+      <th scope="col">Total Interest</th>
+      <th scope="col">Invested Capital</th>
+    </thead>
+    <tbody>
+      @for( result of appService.investmentResults; track result.year) {
+      <tr>
+        <td>{{ result.year }}</td>
+        <td>{{ result.valueEndOfYear | currency : "USD" }}</td>
+        <td>{{ result.interest | currency : "USD" }}</td>
+        <td>{{ result.totalInterest | currency : "USD" }}</td>
+        <td>{{ result.totalAmountInvested | currency : "USD" }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+}
