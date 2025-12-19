@@ -1,0 +1,17 @@
+<app-card>
+  <button [class.active]="selected" (click)="onSelectUser()" >
+    <img [src]="imagePath" [alt]="user?.name" />
+    <span>{{ user?.name }}</span>
+  </button>
+  <!-- <button (click)="onSelectUser()">
+    <img [src]="imagePath" [alt]="name" />
+    <span>{{ name }}</span>
+  </button> -->
+  <!-- <button (click)="onSelectUser()">
+    <img [src]="imagePath()" [alt]="selectedUser().name" />
+    <span>{{ selectedUser().name }}</span>
+
+    <img [src]="imagePath" [alt]="selectedUser.name" />
+    <span>{{ selectedUser}}</span>
+  </button> -->
+</app-card>

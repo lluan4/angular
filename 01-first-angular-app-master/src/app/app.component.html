@@ -1,0 +1,37 @@
+<app-header />
+
+<main>
+  <ul id="users">
+    <!-- Legacy
+    <li *ngFor="let user of users">
+      <app-user [user]="user" (select)="onSelectUser($event)" />
+    </li> -->
+
+    @for (user of users; track user.id) {
+      <li>
+        <app-user 
+        [user]="user"
+        (select)="onSelectUser($event)"
+        [selected]="user.id === selectedUser?.id"
+        />
+      </li>
+    }
+  </ul>
+
+  <!-- Legacy
+  <app-tasks *ngIf="selectedUser; else fallback" id="fallback" [selectedUser]="selectedUser" />
+  <ng-template #fallback>
+    <h1 id="fallback">Selecione um usuário</h1>
+  </ng-template> -->
+
+  @if (selectedUser) {
+  <app-tasks 
+    [selectedUser]="selectedUser"
+    [isAddingTask]="isAddingTask"
+    (cancelAddTask)="onCancelAddTask()"
+    (addTask)="onStartAddTask()"
+   />
+  }@else {
+  <h1 id="fallback">Selecione um usuário</h1>
+  }
+</main>
